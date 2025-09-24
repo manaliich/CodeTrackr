@@ -84,6 +84,17 @@
   text-decoration: underline;
 }
 
+.auth-error {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
 @media (max-width: 480px) {
   .auth-container {
     padding: 24px 8px;

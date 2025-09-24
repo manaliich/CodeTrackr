@@ -10,6 +10,7 @@ function SignupPage() {
     password: "",
     password2: "",
   });
+  const [errorMessage, setErrorMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -20,30 +21,63 @@ function SignupPage() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage(""); // Clear previous errors
+    
     if (password !== password2) {
-      alert("Passwords do not match");
-    } else {
-      const newUser = {
-        username,
-        email,
-        password,
-        password2,
+      setErrorMessage("Passwords do not match");
+      return;
+    }
+    
+    const newUser = {
+      username,
+      email,
+      password,
+      password2,
+    };
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
       };
-      try {
-        const config = {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        };
-        const body = JSON.stringify(newUser);
-        const res = await axios.post("http://127.0.0.1:8000/api/signup/", body, config);
-        console.log(res.data);
-        alert("Signup successful! Please login.");
-        navigate("/login");
-      } catch (err) {
-        console.error(err.response.data);
-        alert("Signup failed. Please try again.");
+      const body = JSON.stringify(newUser);
+      const res = await axios.post("http://127.0.0.1:8000/api/signup/", body, config);
+      console.log(res.data);
+      alert("Signup successful! Please login.");
+      navigate("/login");
+    } catch (err) {
+      console.error(err.response?.data);
+      // Extract specific error messages from backend response
+      let errorMsg = "Signup failed. Please try again.";
+      
+      if (err.response?.data) {
+        const errorData = err.response.data;
+        
+        // Handle object with validation errors
+        if (typeof errorData === 'object' && !errorData.detail && !errorData.message) {
+          const errorMessages = [];
+          for (const [field, messages] of Object.entries(errorData)) {
+            if (Array.isArray(messages)) {
+              errorMessages.push(`${field}: ${messages.join(', ')}`);
+            } else if (typeof messages === 'string') {
+              errorMessages.push(`${field}: ${messages}`);
+            }
+          }
+          if (errorMessages.length > 0) {
+            errorMsg = errorMessages.join('\n');
+          }
+        }
+        // Handle single error message
+        else if (errorData.detail) {
+          errorMsg = errorData.detail;
+        } else if (errorData.message) {
+          errorMsg = errorData.message;
+        } else if (typeof errorData === 'string') {
+          errorMsg = errorData;
+        }
       }
+      
+      setErrorMessage(errorMsg);
     }
   };
 
@@ -104,6 +138,13 @@ function SignupPage() {
 
           <button type="submit" className="auth-btn">Sign Up</button>
         </form>
+        {errorMessage && (
+          <div className="auth-error">
+            {errorMessage.split('\n').map((line, index) => (
+              <div key={index}>{line}</div>
+            ))}
+          </div>
+        )}
         <div className="auth-extra">
           <span>Already have an account?</span>
           <a href="/login" className="auth-link">Login</a>
