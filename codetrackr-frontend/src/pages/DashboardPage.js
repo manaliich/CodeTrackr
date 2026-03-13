@@ -1,11 +1,51 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { UserContext } from "../utils/UserContext";
 import "../styles/dashboard.css";
 
-function DashboardPage() {
+function DashboardPage({ children }) {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isActive = (path) => location.pathname === path;
+
+  const defaultContent = (
+    <>
+      <h1 className="dashboard-heading">User Dashboard</h1>
+
+      <div className="dashboard-info-box">
+        <span className="dashboard-info-icon">&#8505;</span>
+        <div>
+          <strong>Complete Your Profile</strong>
+          <div>
+            Please complete your profile to unlock all features and start tracking your coding progress.
+            Once your profile is complete, your dashboard will populate with your data.
+          </div>
+          <button
+            className="dashboard-info-btn"
+            onClick={() => navigate("/profile")}
+          >
+            Go to Profile
+          </button>
+        </div>
+      </div>
+      <div className="dashboard-tracking-row">
+        <div className="dashboard-card">
+          <div className="dashboard-card-icon">&#10067;</div>
+          <h2 className="dashboard-card-title">Questions Tracking</h2>
+          <p className="dashboard-card-empty">No Questions Tracked</p>
+          <p className="dashboard-card-msg">Complete your profile to start tracking.</p>
+        </div>
+        <div className="dashboard-card">
+          <div className="dashboard-card-icon">&#128193;</div>
+          <h2 className="dashboard-card-title">Project Tracking</h2>
+          <p className="dashboard-card-empty">No Projects Tracked</p>
+          <p className="dashboard-card-msg">Complete your profile to start tracking.</p>
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <div className="dashboard-root">
@@ -19,7 +59,7 @@ function DashboardPage() {
                 Profile
               </a>
             </li>
-            <li className="active">
+            <li className={isActive("/dashboard") ? "active" : ""}>
               <a href="/dashboard">
                 <span className="dashboard-icon">&#127968;</span>
                 Dashboard
@@ -37,6 +77,12 @@ function DashboardPage() {
                 Track Projects
               </a>
             </li>
+            <li className={isActive("/dashboard/viasocket") ? "active" : ""}>
+              <a href="/dashboard/viasocket">
+                <span className="dashboard-icon">&#9889;</span>
+                ViaSocket
+              </a>
+            </li>
           </ul>
         </nav>
         <div className="dashboard-logout">
@@ -48,41 +94,9 @@ function DashboardPage() {
       </aside>
       <main className="dashboard-main">
         <div className="dashboard-welcome-top">
-  Welcome, logged in user: <span className="dashboard-welcome-username">{user?.username || "User"}</span>!
-</div>
-
-        <h1 className="dashboard-heading">User Dashboard</h1>
-        
-        <div className="dashboard-info-box">
-          <span className="dashboard-info-icon">&#8505;</span>
-          <div>
-            <strong>Complete Your Profile</strong>
-            <div>
-              Please complete your profile to unlock all features and start tracking your coding progress.
-              Once your profile is complete, your dashboard will populate with your data.
-            </div>
-            <button
-              className="dashboard-info-btn"
-              onClick={() => navigate("/profile")}
-            >
-              Go to Profile
-            </button>
-          </div>
+          Welcome, logged in user: <span className="dashboard-welcome-username">{user?.username || "User"}</span>!
         </div>
-        <div className="dashboard-tracking-row">
-          <div className="dashboard-card">
-            <div className="dashboard-card-icon">&#10067;</div>
-            <h2 className="dashboard-card-title">Questions Tracking</h2>
-            <p className="dashboard-card-empty">No Questions Tracked</p>
-            <p className="dashboard-card-msg">Complete your profile to start tracking.</p>
-          </div>
-          <div className="dashboard-card">
-            <div className="dashboard-card-icon">&#128193;</div>
-            <h2 className="dashboard-card-title">Project Tracking</h2>
-            <p className="dashboard-card-empty">No Projects Tracked</p>
-            <p className="dashboard-card-msg">Complete your profile to start tracking.</p>
-          </div>
-        </div>
+        {children || defaultContent}
       </main>
     </div>
   );

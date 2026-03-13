@@ -1,0 +1,604 @@
+/* ─────────────────────────────────────────────
+   ViaSocket Integration Page Styles
+   ───────────────────────────────────────────── */
+
+.vs-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #1a1a2e;
+}
+
+/* Header */
+.vs-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.vs-header-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.vs-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 6px;
+  color: #16213e;
+}
+
+.vs-subtitle {
+  margin: 0;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ── Step progress bar ── */
+.vs-steps-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.vs-steps-line {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+  right: 40px;
+  height: 2px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+.vs-step-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.vs-step-num {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+  border: 2px solid transparent;
+}
+
+.vs-step-btn.active .vs-step-num {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #4f46e5;
+}
+
+.vs-step-btn.done .vs-step-num {
+  background: #10b981;
+  color: #fff;
+  border-color: #10b981;
+}
+
+.vs-step-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.vs-step-btn.active .vs-step-label {
+  color: #4f46e5;
+}
+
+.vs-step-btn.done .vs-step-label {
+  color: #10b981;
+}
+
+/* ── Card ── */
+.vs-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 32px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.vs-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #16213e;
+}
+
+.vs-step-badge {
+  width: 28px;
+  height: 28px;
+  background: #4f46e5;
+  color: #fff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.vs-card-desc {
+  color: #555;
+  font-size: 0.93rem;
+  line-height: 1.6;
+  margin: 0 0 24px;
+}
+
+.vs-card-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* ── Buttons ── */
+.vs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+
+.vs-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.vs-btn-primary {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #4f46e5;
+}
+
+.vs-btn-primary:hover:not(:disabled) {
+  background: #4338ca;
+  border-color: #4338ca;
+}
+
+.vs-btn-outline {
+  background: #fff;
+  color: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.vs-btn-outline:hover:not(:disabled) {
+  background: #f5f3ff;
+}
+
+.vs-btn-ghost {
+  background: transparent;
+  color: #666;
+  border-color: #d1d5db;
+}
+
+.vs-btn-ghost:hover:not(:disabled) {
+  background: #f3f4f6;
+  color: #333;
+}
+
+.vs-btn-sm {
+  padding: 5px 12px;
+  font-size: 0.8rem;
+}
+
+/* ── API Key box ── */
+.vs-field-row {
+  margin-bottom: 20px;
+}
+
+.vs-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.vs-required {
+  color: #ef4444;
+}
+
+.vs-key-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+
+.vs-key-value {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.88rem;
+  color: #374151;
+  word-break: break-all;
+  flex: 1;
+}
+
+.vs-key-placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  flex: 1;
+}
+
+.vs-key-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Info box ── */
+.vs-info-box {
+  display: flex;
+  gap: 12px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+.vs-info-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* ── Alert ── */
+.vs-alert {
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.vs-alert-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+}
+
+.vs-alert-success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+.vs-error-list {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.vs-success-detail {
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+
+/* ── Config grid (Step 2) ── */
+.vs-config-grid {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.vs-config-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.vs-config-row:last-child {
+  border-bottom: none;
+}
+
+.vs-config-label {
+  background: #f9fafb;
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+}
+
+.vs-config-value {
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vs-config-value-col {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vs-header-pair {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: monospace;
+  font-size: 0.88rem;
+}
+
+.vs-header-name {
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.vs-header-sep {
+  color: #9ca3af;
+}
+
+.vs-header-val {
+  color: #374151;
+  word-break: break-all;
+}
+
+/* ── Section headings ── */
+.vs-section-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #16213e;
+  margin: 28px 0 12px;
+}
+
+/* ── Table ── */
+.vs-table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 24px;
+}
+
+.vs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.87rem;
+}
+
+.vs-table thead tr {
+  background: #f9fafb;
+}
+
+.vs-table th {
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.vs-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #4b5563;
+  vertical-align: top;
+}
+
+.vs-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.vs-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* ── Code blocks ── */
+.vs-code-block {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.82rem;
+}
+
+.vs-code-multi {
+  position: relative;
+  display: block;
+  padding: 16px 16px 16px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.vs-code-multi pre {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.vs-code-copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #cdd6f4;
+  border-color: rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  padding: 4px 10px;
+}
+
+.vs-code-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+/* ── Badges ── */
+.vs-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.vs-badge-green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.vs-badge-red {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.vs-badge-gray {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* ── Test form (Step 3) ── */
+.vs-test-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.vs-form-row {
+  margin-bottom: 18px;
+}
+
+.vs-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 18px;
+}
+
+@media (max-width: 600px) {
+  .vs-form-grid {
+    grid-template-columns: 1fr;
+  }
+  .vs-config-row {
+    grid-template-columns: 1fr;
+  }
+  .vs-config-label {
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+}
+
+.vs-input,
+.vs-select,
+.vs-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #374151;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+.vs-input:focus,
+.vs-select:focus,
+.vs-textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.vs-textarea {
+  resize: vertical;
+}
+
+/* ── Quick reference footer ── */
+.vs-quick-ref {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px 28px;
+}
+
+.vs-qr-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #374151;
+  margin: 0 0 16px;
+}
+
+.vs-qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.vs-qr-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vs-qr-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.vs-qr-value {
+  font-family: monospace;
+  font-size: 0.83rem;
+  color: #374151;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  padding: 4px 8px;
+  word-break: break-all;
+}
